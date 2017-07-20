@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SimpleRobotiumTest</string>
+
+    <string name="title_1_welcome">Welcome </string>
+    <string name="title_2">Login in to Enter </string>
+    <string name="forgot_pwd">Forgot Password?</string>
+    <string name="copyright">Shiva SNape "\u00a9" 2017</string>
+</resources>
