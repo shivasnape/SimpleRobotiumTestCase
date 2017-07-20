@@ -3,6 +3,7 @@ package com.example.root.simplerobotiumtest;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.widget.EditText;
 
 import com.example.root.simplerobotiumtest.activity.LoginActivity;
 import com.robotium.solo.Solo;
@@ -20,8 +21,8 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class TestClass {
 
-    private static final String EMAIL = "admin@gmail.com";
-    private static final String PWD = "admin";
+    private static final String EMAIL = "shiva@gmail.com";
+    private static final String PWD = "shiva";
 
 
     @Rule
@@ -48,7 +49,9 @@ public class TestClass {
     public void testLoginButton() throws Exception {
         //Unlock the lock screen
         solo.unlockScreen();
-       /* solo .getView(R.id.edt_login_email).solo.getEditText(EMAIL);*/
+        //setting edittext with Data
+        solo.enterText((EditText) solo.getView(R.id.edt_login_email),EMAIL);
+        solo.enterText((EditText) solo.getView(R.id.edt_login_pwd),PWD);
         //Click on action menu item add
         solo.clickOnView(solo.getView(R.id.btn_login));
         //Assert that NoteEditor activity is opened

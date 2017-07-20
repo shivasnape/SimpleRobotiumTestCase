@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.root.simplerobotiumtest.R;
 
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     Button bLogin;
     boolean doubleBackToExitPressedOnce = false;
     CoordinatorLayout coordinatorLayout;
+    EditText eEmail, ePwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +37,37 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        bLogin = (Button)findViewById(R.id.btn_login);
-        coordinatorLayout = (CoordinatorLayout)findViewById(R.id.coordinator_login);
+        bLogin = (Button) findViewById(R.id.btn_login);
+        eEmail = (EditText) findViewById(R.id.edt_login_email);
+        ePwd = (EditText) findViewById(R.id.edt_login_pwd);
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_login);
 
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                finish();
+
+                if (eEmail.getText().toString().equals("shiva@gmail.com")) {
+
+                    if (ePwd.getText().toString().equals("shiva")) {
+
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
 //                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+
+
+                    } else {
+
+                        Toast.makeText(getApplicationContext(), "Invalid Password....", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Invalid Email....", Toast.LENGTH_SHORT).show();
+
+
+                }
+
 
             }
         });
@@ -63,10 +87,10 @@ public class LoginActivity extends AppCompatActivity {
 
         this.doubleBackToExitPressedOnce = true;
 //        Toast.makeText(this, "Double Tap to Exit", Toast.LENGTH_SHORT).show();
-        Snackbar snackbar = Snackbar.make(coordinatorLayout,"Double tap to Exit",Snackbar.LENGTH_SHORT);
+        Snackbar snackbar = Snackbar.make(coordinatorLayout, "Double tap to Exit", Snackbar.LENGTH_SHORT);
         ViewGroup group = (ViewGroup) snackbar.getView();
         group.setBackgroundResource(R.color.actionbar2);
-        TextView t = (TextView)group.findViewById(android.support.design.R.id.snackbar_text);
+        TextView t = (TextView) group.findViewById(android.support.design.R.id.snackbar_text);
         t.setTextColor(Color.WHITE);
         snackbar.show();
 
